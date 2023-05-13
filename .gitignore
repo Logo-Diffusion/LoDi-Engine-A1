@@ -34,3 +34,10 @@ notification.mp3
 /test/stderr.txt
 /cache.json*
 /config_states/
+# /configs/**/*
+# ignore all files in the /config directory except the example (production/development) files
+/configs/**/*.config.json
+!/configs/**/example.*.json
+# also ignore /webui-user.aah.config.sh but not webui-user.example.config.sh
+webui-user.*.config.sh
+!webui-user.example.config.sh
