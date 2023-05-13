@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  webui:
+    build: .
+    ports: 
+      - 1138:1138
+    environment:
+      - DOWNLOAD_MODELS=false
+      - COMMAND_LINE_ARGS="--port 1138 --api --listen --disable-safe-unpickle --enable-insecure-extension-access --no-download-sd-model --no-half-vae --xformers--listen --port "
+      - HUGGINGFACE_API="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"
+    volumes:
+      - ./docker/extensions/:/app/extensions/
+      - ./docker/models/:/app/models/
