@@ -1,4 +1,4 @@
-FROM python:3.10.9-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 
@@ -17,9 +17,9 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/pip \
   pip install -r requirements_versions.txt
 
-RUN --mount=type=cache,target=/root/.cache/pip  \
-  --mount=type=bind,from=xformers,source=/wheel.whl,target=/xformers-0.0.20.dev528-cp310-cp310-manylinux2014_x86_64.whl \
-  pip install /xformers-0.0.20.dev528-cp310-cp310-manylinux2014_x86_64.whl
+# RUN --mount=type=cache,target=/root/.cache/pip  \
+#   --mount=type=bind,from=xformers,source=/wheel.whl,target=/xformers-0.0.20.dev528-cp310-cp310-manylinux2014_x86_64.whl \
+#   pip install /xformers-0.0.20.dev528-cp310-cp310-manylinux2014_x86_64.whl
 
 ENV ROOT=/app
 
