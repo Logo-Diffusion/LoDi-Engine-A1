@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   webui:
+    image: ghcr.io/logo-diffusion/lodi-engine-a1:master
     build: .
     ports: 
       - 1138:1138
