@@ -34,5 +34,7 @@ ENV HUGGINGFACE_TOKEN ""
 ENV GITHUB_TOKEN ""
 ENV COMMAND_LINE_ARGS ""
 
+RUN chmod +x /app/*.sh
+
 EXPOSE 7860
 ENTRYPOINT ["/app/entrypoint.sh"]
