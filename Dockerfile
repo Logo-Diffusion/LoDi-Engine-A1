@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/cache --mount=type=cache,target=/root/.cache/pip 
   pip install /cache/torch-2.0.0-cp310-cp310-linux_x86_64.whl torchvision --index-url https://download.pytorch.org/whl/cu118
 
 
-COPY . .
+COPY ./requirements_versions.txt ./requirements_versions.txt
 
 RUN --mount=type=cache,target=/root/.cache/pip \
   pip install -r requirements_versions.txt
@@ -33,6 +33,9 @@ ENV CLI_ARGS=""
 ENV HUGGINGFACE_TOKEN ""
 ENV GITHUB_TOKEN ""
 ENV COMMAND_LINE_ARGS ""
+
+COPY . .
+COPY ./.git ./.git
 
 RUN chmod +x /app/*.sh
 
