@@ -3,4 +3,4 @@
 
 [[ "${DOWNLOAD_MODELS}" == "true" ]] && /app/loadData.sh
 
-/app/webui.sh $COMMAND_LINE_ARGS
+/app/webui-docker.sh $COMMAND_LINE_ARGS
