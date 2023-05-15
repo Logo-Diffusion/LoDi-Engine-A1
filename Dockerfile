@@ -36,6 +36,7 @@ ENV COMMAND_LINE_ARGS ""
 
 RUN chmod +x /app/*.sh
 
+RUN useradd -rm -d /app/ -g root -G sudo -u 1001 stable-diffusion
 USER stable-diffusion
 
 EXPOSE 7860
