@@ -35,7 +35,7 @@ ENV GITHUB_TOKEN ""
 ENV COMMAND_LINE_ARGS ""
 
 COPY . .
-COPY ./.git ./.git
+RUN mkdir /app/.git
 
 RUN chmod +x /app/*.sh
 
