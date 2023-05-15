@@ -25,7 +25,6 @@ ENV ROOT=/app
 
 RUN apt-get -y install libgoogle-perftools-dev && apt-get clean
 
-USER stable-diffusion
 
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 ENV NVIDIA_VISIBLE_DEVICES=all
@@ -36,6 +35,8 @@ ENV GITHUB_TOKEN ""
 ENV COMMAND_LINE_ARGS ""
 
 RUN chmod +x /app/*.sh
+
+USER stable-diffusion
 
 EXPOSE 7860
 ENTRYPOINT ["/app/entrypoint.sh"]
