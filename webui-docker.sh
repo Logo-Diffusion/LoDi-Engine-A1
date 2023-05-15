@@ -54,5 +54,5 @@ else
     printf "Launching launch.py..."
     printf "\n%s\n" "${delimiter}"
     prepare_tcmalloc
-    python "${LAUNCH_SCRIPT}" "$@"
+    python3 "${LAUNCH_SCRIPT}" "$@"
 fi
