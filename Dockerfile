@@ -35,4 +35,4 @@ ENV GITHUB_TOKEN ""
 ENV COMMAND_LINE_ARGS ""
 
 EXPOSE 7860
-ENTRYPOINT ["/docker/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
