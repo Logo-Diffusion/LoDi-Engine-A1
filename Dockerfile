@@ -4,7 +4,7 @@ WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive PIP_PREFER_BINARY=1
 
-RUN apt-get update && apt install fonts-dejavu-core rsync git jq moreutils aria2 -y && apt-get clean
+RUN apt-get update && apt install fonts-dejavu-core rsync git jq moreutils aria2 wget -y && apt-get clean
 
 RUN --mount=type=cache,target=/cache --mount=type=cache,target=/root/.cache/pip \
   aria2c -x 5 --dir /cache --out torch-2.0.0-cp310-cp310-linux_x86_64.whl -c \
@@ -35,7 +35,6 @@ ENV GITHUB_TOKEN ""
 ENV COMMAND_LINE_ARGS ""
 
 COPY . .
-RUN mkdir /app/.git
 
 RUN chmod +x /app/*.sh
 
