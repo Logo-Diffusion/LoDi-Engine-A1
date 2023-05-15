@@ -25,6 +25,7 @@ ENV ROOT=/app
 
 RUN apt-get -y install libgoogle-perftools-dev && apt-get clean
 
+USER stable-diffusion
 
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 ENV NVIDIA_VISIBLE_DEVICES=all
