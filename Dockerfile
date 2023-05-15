@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 
 WORKDIR /app
 
@@ -21,9 +21,11 @@ RUN --mount=type=cache,target=/cache --mount=type=cache,target=/root/.cache/pip 
 
 
 COPY ./requirements_versions.txt ./requirements_versions.txt
+COPY ./requirements.txt ./requirements.txt
 
 RUN --mount=type=cache,target=/root/.cache/pip \
-  pip install -r requirements_versions.txt
+  pip install -r requirements_versions.txt && \
+  pip install -r requirements.txt
 
 # RUN --mount=type=cache,target=/root/.cache/pip  \
 #   --mount=type=bind,from=xformers,source=/wheel.whl,target=/xformers-0.0.20.dev528-cp310-cp310-manylinux2014_x86_64.whl \
