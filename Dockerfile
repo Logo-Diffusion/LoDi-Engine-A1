@@ -1,8 +1,16 @@
-FROM python:3.10-slim
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
 WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive PIP_PREFER_BINARY=1
+
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub
+
+RUN apt update && \
+    apt install --no-install-recommends -y build-essential software-properties-common libsndfile1 ffmpeg libpq-dev gcc mediainfo && \
+    add-apt-repository -y ppa:deadsnakes/ppa && \
+    apt install --no-install-recommends -y python3-distutils python3-pip python3-apt python3-dev python3.10 && \
+    apt clean && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt install fonts-dejavu-core rsync git jq moreutils aria2 wget -y && apt-get clean
 
