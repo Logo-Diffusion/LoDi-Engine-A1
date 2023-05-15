@@ -47,11 +47,13 @@ COPY . .
 RUN chmod +x /app/*.sh
 
 RUN useradd -rm -d /app/ -g root -G sudo -u 1001 stable-diffusion
-USER stable-diffusion
 
 RUN chown stable-diffusion /app/ && \
     chown stable-diffusion /app/* && \
     chown stable-diffusion /app/**/*
+
+USER stable-diffusion
+
 
 EXPOSE 7860
 ENTRYPOINT ["/app/entrypoint.sh"]
