@@ -19,6 +19,11 @@ RUN --mount=type=cache,target=/cache --mount=type=cache,target=/root/.cache/pip 
   https://download.pytorch.org/whl/cu118/torch-2.0.0%2Bcu118-cp310-cp310-linux_x86_64.whl && \
   pip install /cache/torch-2.0.0-cp310-cp310-linux_x86_64.whl torchvision --index-url https://download.pytorch.org/whl/cu118
 
+RUN --mount=type=cache,target=/root/.cache/pip \
+  pip install pyngrok \
+  git+https://github.com/TencentARC/GFPGAN.git@8d2447a2d918f8eba5a4a01463fd48e45126a379 \
+  git+https://github.com/openai/CLIP.git@d50d76daa670286dd6cacf3bcd80b5e4823fc8e1 \
+  git+https://github.com/mlfoundations/open_clip.git@bb6e834e9c70d9c27d0dc3ecedeebeaeb1ffad6b
 
 COPY ./requirements_versions.txt ./requirements_versions.txt
 COPY ./requirements.txt ./requirements.txt
