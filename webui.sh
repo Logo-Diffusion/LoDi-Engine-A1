@@ -186,17 +186,17 @@ prepare_tcmalloc() {
     fi
 }
 
-# if [[ ! -z "${ACCELERATE}" ]] && [ ${ACCELERATE}="True" ] && [ -x "$(command -v accelerate)" ]
-# then
-#     printf "\n%s\n" "${delimiter}"
-#     printf "Accelerating launch.py..."
-#     printf "\n%s\n" "${delimiter}"
-#     prepare_tcmalloc
-#     exec accelerate launch --num_cpu_threads_per_process=6 "${LAUNCH_SCRIPT}" "$@"
-# else
-#     printf "\n%s\n" "${delimiter}"
-#     printf "Launching launch.py..."
-#     printf "\n%s\n" "${delimiter}"
-#     prepare_tcmalloc
-#     exec "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
-# fi
+if [[ ! -z "${ACCELERATE}" ]] && [ ${ACCELERATE}="True" ] && [ -x "$(command -v accelerate)" ]
+then
+    printf "\n%s\n" "${delimiter}"
+    printf "Accelerating launch.py..."
+    printf "\n%s\n" "${delimiter}"
+    prepare_tcmalloc
+    exec accelerate launch --num_cpu_threads_per_process=6 "${LAUNCH_SCRIPT}" "$@"
+else
+    printf "\n%s\n" "${delimiter}"
+    printf "Launching launch.py..."
+    printf "\n%s\n" "${delimiter}"
+    prepare_tcmalloc
+    exec "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
+fi
